@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
 
-  #after_create :friends_birth
+after_create :get_friends
+                 
+                 
                   def self.from_omniauth(auth, signed_in_resource=nil)
                     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
                       user.provider = auth.provider
@@ -26,6 +28,26 @@ class User < ActiveRecord::Base
                     end
                   end
 
+                  
+                  def get_friends
+                    @friends = self.friends_birth
+                    @friends.map do
+                      |x| if x.birthday?
+                      
+                      self.friends.create(name: x.name, fb_id: x.id, birthday: x.birthday )
+                     end
+                    end
+                  end
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
                   def facebook
                     @facebook ||= Koala::Facebook::API.new(oauth_token)
                     block_given? ? yield(@facebook) : @facebook
@@ -34,6 +56,11 @@ class User < ActiveRecord::Base
                     nil # or consider a custom null object
                   end
 
+                  
+       
+       
+        
+                  
                   def friends_birth
                     facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
                  end
