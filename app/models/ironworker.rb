@@ -1,8 +1,11 @@
 require 'iron_worker'
-class IronWorker < IronWorker::Base
-  
-  attr_accessible  
-  
-  
-  
+
+class HelloWorker < IronWorker::Base
+
+    attr_accessor :name
+
+    # This is the method that will be run
+    def run
+        puts "Hello #{name}!"
+    end
 end
