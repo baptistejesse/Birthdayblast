@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
                       user.uid = auth.uid
                       user.email = auth.info.email
                       user.password = Devise.friendly_token[0,20]
-                      user.name = auth.info.name
+                      user.username = auth.info.name
                       user.gender= auth.extra.raw_info.gender
                       user.pic = auth.info.image
                       user.oauth_token = auth.credentials.token
@@ -36,7 +36,9 @@ class User < ActiveRecord::Base
 
                   def friends_birth
                     facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name").each do
-                      |friend|  @birth = self.friends.create(birthday: friend.birthday , fb_id: friend.id, name: friend.name )
+                    |friend| 
+                    if friend.birthday?
+                     @birth = self.friends.create(birthday: friend.birthday , fb_id: friend.id, name: friend.name )
                                
                       end }
                   end
