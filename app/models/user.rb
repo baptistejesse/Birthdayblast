@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :username,:pic,:provider,:oauth_token, :oauth_expires_at, :uid
+  attr_accessible :username,:pic,:provider,:oauth_token,:uid
   oauth_expires_at
   #after_create :friends_birth
                   def self.from_omniauth(auth, signed_in_resource=nil)
