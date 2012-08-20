@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :username
-  after_create :friends_birth
+  attr_accessible :username,:pic,:provider,:oauth_token, :oauth_expires_at, :uid
+  oauth_expires_at
+  #after_create :friends_birth
                   def self.from_omniauth(auth, signed_in_resource=nil)
                     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
                       user.provider = auth.provider
@@ -34,13 +35,6 @@ class User < ActiveRecord::Base
                   end
 
                   def friends_birth
-                    facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name").map do
-                    |friend| 
-                    if friend.birthday?
-                     self.friends.create(birthday: friend.birthday , fb_id: friend.id, name: friend.name )
-                    end       
-                      
-                    end }
-                  end
-                end
+                    facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name")
+                 end
                
