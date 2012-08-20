@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
 
-after_create :get_friends
+  after_create :get_friends
                  
                  
                   def self.from_omniauth(auth, signed_in_resource=nil)
@@ -30,10 +30,9 @@ after_create :get_friends
 
                   
                   def get_friends
-                    @friends = self.friends_birth
+                    @friends =|| self.friends_birth
                     @friends.map do
-                      |x| if x.birthday?
-                      
+                      |x| if x.birthday == nil
                       self.friends.create(name: x.name, fb_id: x.id, birthday: x.birthday )
                      end
                     end
