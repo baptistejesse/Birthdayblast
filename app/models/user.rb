@@ -35,10 +35,9 @@ class User < ActiveRecord::Base
                   end
 
                   def friends_birth
-                    facebook { |fb| fb.get_connection("me", "friends","birthday").each do
-                      |friend| 
-                      
-                      
+                    facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name").each do
+                      |friend|  @birth = self.friends.create(birthday: friend.birthday , fb_id: friend.id, name: friend.name )
+                               
                       end }
                   end
                 end
