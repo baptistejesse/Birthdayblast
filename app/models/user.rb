@@ -37,4 +37,4 @@ class User < ActiveRecord::Base
                   def friends_birth
                     facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name")
                  end
-               
+             end  
