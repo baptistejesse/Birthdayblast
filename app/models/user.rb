@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
                   def get_friends
                     @friends = self.friends_birth
                     @friends.map do
-                      |x| if x.birthday.present?
+                      |x| 
                       self.friends.create(name: x.name, fb_id: x.id, birthday: x.birthday )
                      end
                     end
