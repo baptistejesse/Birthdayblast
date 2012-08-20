@@ -32,6 +32,9 @@ gem 'devise'
 gem 'rspec-rails'
 gem 'omniauth-facebook'
 gem 'thin'
+gem 'taps'
+gem 'koala'
+gem 'iron_worker'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

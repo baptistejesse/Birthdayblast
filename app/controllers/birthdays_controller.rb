@@ -1,5 +1,6 @@
 
 class BirthdaysController < ApplicationController
+before_filter :authenticate_user!
   # GET /birthdays
   # GET /birthdays.json
   def index
