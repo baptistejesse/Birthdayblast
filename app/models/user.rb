@@ -35,6 +35,6 @@ class User < ActiveRecord::Base
                   end
 
                   def friends_birth
-                    facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name")
+                    facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
                  end
              end  
