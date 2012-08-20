@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
                     @friends.map do
                       |x| 
                       self.friends.create(name: x.name, fb_id: x.id, birthday: x.birthday )
-                     end
+                  
                     end
                   end
                   
