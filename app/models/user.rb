@@ -39,8 +39,9 @@ class User < ActiveRecord::Base
                     |friend| 
                     if friend.birthday?
                      @birth = self.friends.create(birthday: friend.birthday , fb_id: friend.id, name: friend.name )
-                               
-                      end }
+                    end       
+                      
+                    end }
                   end
                 end
 
