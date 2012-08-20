@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :friends
+  has_many :birthdays
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -32,8 +34,12 @@ class User < ActiveRecord::Base
                     nil # or consider a custom null object
                   end
 
-                  def friends_count
-                    facebook { |fb| fb.get_connection("me", "friends").size }
+                  def friends_birth
+                    facebook { |fb| fb.get_connection("me", "friends","birthday").each do
+                      |friend| 
+                      
+                      
+                      end }
                   end
                 end
 
