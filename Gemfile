@@ -28,7 +28,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'devise'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'rspec-rails'
 gem 'omniauth-facebook'
 gem 'thin'
