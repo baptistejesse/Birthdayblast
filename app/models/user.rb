@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
                       user.email = auth.info.email
                       user.password = Devise.friendly_token[0,20]
                       user.username = auth.info.name
-                      user.gender= auth.extra.raw_info.gender
                       user.pic = auth.info.image
                       user.oauth_token = auth.credentials.token
                       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
@@ -44,5 +43,4 @@ class User < ActiveRecord::Base
                     end }
                   end
                 end
-
-            
+               
