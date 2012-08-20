@@ -164,6 +164,8 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    typhoeus (0.3.3)
+      mime-types
     tzinfo (0.3.33)
     uglifier (1.2.7)
       execjs (>= 0.3.0)
@@ -190,4 +192,5 @@ DEPENDENCIES
   sqlite3
   taps
   thin
+  typhoeus
   uglifier (>= 1.0.3)
