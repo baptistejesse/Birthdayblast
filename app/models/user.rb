@@ -30,9 +30,9 @@ class User < ActiveRecord::Base
 
                   
                   def get_friends
-                    @friends =|| self.friends_birth
+                    @friends = self.friends_birth
                     @friends.map do
-                      |x| if x.birthday == nil
+                      |x| if x.birthday.present?
                       self.friends.create(name: x.name, fb_id: x.id, birthday: x.birthday )
                      end
                     end
