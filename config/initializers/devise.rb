@@ -215,7 +215,7 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
- config.omniauth :facebook, "404409829623150", "1981816ec4f52e7f3380621c867626d4", :scope => 'email,offline_access,user_about_me,user_birthday,friends_birthday,publish_stream'
+ config.omniauth :facebook, "404409829623150", "1981816ec4f52e7f3380621c867626d4", :scope => 'email,offline_access,user_about_me,user_birthday,friends_birthday,publish_stream', :display => 'touch'
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
   # is mountable, there are some extra configurations to be taken into account.
