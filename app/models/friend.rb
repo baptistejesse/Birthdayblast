@@ -5,7 +5,7 @@ class Friend < ActiveRecord::Base
 
 
 def month_day
-unless birthday.length > 4
+if self.birthday.length > 4
 update_attributes(birthday: birthday.slice(0..4) ) 
 end
 end
