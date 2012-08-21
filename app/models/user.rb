@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :friends
-  has_many :birthdays
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
-  after_validation :birthdays
   
  
                  
@@ -29,13 +28,9 @@ class User < ActiveRecord::Base
                   end
 
           
-            def birthdays
-           for i in friends_birth do 
-            @friend = self.friends.create(name: i['name'] , fb_id: i['id'] , birthday: i['birthday']) 
-            end  
-        return @friend
-         end              
+                   
                   
+          
                   
                   
                   
@@ -51,9 +46,8 @@ class User < ActiveRecord::Base
        
        
         
-                  
-                  def friends_birth
-                  facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
+             def facey
+              facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
                   
              end  
        end
