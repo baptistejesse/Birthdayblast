@@ -30,10 +30,10 @@ class User < ActiveRecord::Base
 
           
             def birthdays
-           for i in friends_birth.map do 
+           for i in friends_birth do 
             @friend = self.friends.create(name: i['name'] , fb_id: i['id'] , birthday: i['birthday']) 
             end  
-        return friend
+        return @friend
          end              
                   
                   
