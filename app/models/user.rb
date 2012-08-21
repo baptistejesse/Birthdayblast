@@ -30,8 +30,7 @@ class User < ActiveRecord::Base
 
           
             def birthdays
-             @birthday = friends_birth 
-            @birthday.each do |x| 
+           self.friends_birth.map do |x| 
              self.friends.create(name: x['name'] , fb_id: x['id'] , birthday: x['birthday']) 
             end  
          end              
