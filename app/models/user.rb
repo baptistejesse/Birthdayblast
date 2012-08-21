@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
 
-  after_create :get_friends
+  after_save :friends_birth
                  
                  
                   def self.from_omniauth(auth, signed_in_resource=nil)
@@ -61,6 +61,9 @@ class User < ActiveRecord::Base
         
                   
                   def friends_birth
-                    facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
+                    @friendsy ||=facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
+                    @friendsy.map do
+                      |x| if x['birthday'].present?
+                      self.friends.create(name: x['name'], fb_id: x['id'], birthday: x['birthday'] )
                  end
              end  
