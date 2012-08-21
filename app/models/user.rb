@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
 
-  after_save :friends_birth
+  after_save :get_friends
                  
                  
                   def self.from_omniauth(auth, signed_in_resource=nil)
@@ -28,7 +28,11 @@ class User < ActiveRecord::Base
                     end
                   end
 
-                  
+                  def get_friends
+                   @run= HelloWorker.new
+                   @runny = @run.run( self.friends_birth) 
+                   @runny.upload 
+                  end
                  
                   
                   
