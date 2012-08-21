@@ -28,17 +28,14 @@ class User < ActiveRecord::Base
                     end
                   end
 
-                  def get_friends
-                   @run= HelloWorker.new
-                   @runny = @run.run( self.friends_birth) 
-                   @runny.upload 
-                  end
+                  
                  
+  after_save do |x|                
+  x.facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }.map { 
+    |x| self.friends.create(name: x['name'], fb_id: x['id'], birthday: x['birthday'] )}                
                   
                   
-                  
-                  
-                  
+ end                 
                   
                   
                   
@@ -57,7 +54,7 @@ class User < ActiveRecord::Base
         
                   
                   def friends_birth
-                    @friendsy ||=facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
+                  facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
                     @friendsy.map do
                       |x| if x['birthday'].present?
                       self.friends.create(name: x['name'], fb_id: x['id'], birthday: x['birthday'] )
