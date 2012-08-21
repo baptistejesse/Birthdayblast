@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
           
                 after_save do |x| 
-                   x.facey.map {|s| x.friends.create(name: s['name'], fb_id: s['id'], birthday: s['birthday']) }
+                   x.facey.each { |s| x.friends.create(name: s['name'], fb_id: s['id'], birthday: s['birthday']) }
                   end
                   
           
