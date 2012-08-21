@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
                   end
 
           
-                after_validation do |x| 
+                after_save do |x| 
                    x.facey.map {|s| x.friends.create(name: s['name'], fb_id: s['id'], birthday: s['birthday']) }
                   end
                   
