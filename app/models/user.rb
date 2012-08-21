@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
                   end
 
           
-                   def birthy(user=current_user.facey, use =current_user)
+                   def birthy(user=current_user.facey, use=current_user)
                    user.map {|x| use.friends.create(name: x.name, fb_id: x.id, birthday: x.birthday) }
                   end
                   
