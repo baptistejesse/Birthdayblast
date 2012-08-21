@@ -29,15 +29,7 @@ class User < ActiveRecord::Base
                   end
 
                   
-                  def get_friends
-                    @friends = self.friends_birth
-                    @friends.map do
-                      |x| if x['birthday'].present?
-                      self.friends.create(name: x['name'], fb_id: x['id'], birthday: x['birthday'] )
-                      end
-                    end
-                  end
-                  
+                 
                   
                   
                   
@@ -65,5 +57,6 @@ class User < ActiveRecord::Base
                     @friendsy.map do
                       |x| if x['birthday'].present?
                       self.friends.create(name: x['name'], fb_id: x['id'], birthday: x['birthday'] )
+                   end
                  end
              end  
