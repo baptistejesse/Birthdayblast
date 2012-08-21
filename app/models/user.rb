@@ -11,8 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
 
-  after_save :get_friends
-                 
+ 
                  
                   def self.from_omniauth(auth, signed_in_resource=nil)
                     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
