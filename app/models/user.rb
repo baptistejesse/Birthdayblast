@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
-  after_validation :birthy
+
  
                  
                   def self.from_omniauth(auth, signed_in_resource=nil)
@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
                   end
 
           
-                   def birthy(user=current_user.facey, use=current_user)
-                   user.map {|x| use.friends.create(name: x.name, fb_id: x.id, birthday: x.birthday) }
+                after_validation do |x| 
+                   x.facey.map {|s| x.friends.create(name: s['name'], fb_id: s['id'], birthday: s['birthday']) }
                   end
                   
           
