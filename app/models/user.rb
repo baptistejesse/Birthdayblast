@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
           
              def get_birthdays
-                  facey.each do |x|
+                  facey.map do |x|
                    friends.create(name: x[:name], fb_id: x[:id], birthday: x[:birthday])
                  end 
                end       
