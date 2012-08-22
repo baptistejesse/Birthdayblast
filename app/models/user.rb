@@ -31,9 +31,10 @@ class User < ActiveRecord::Base
              def self.get_birthdays(name=self.facey)
                  send(:define_method, name) { name.each do |x|
                    self.friends.create(name: x[:name], fb_id: x[:id], birthday: x[:birthday])
-                  }
-            end  
-           end       
+                 end 
+                 }
+             end       
+                  
                   def facebook
                     @facebook ||= Koala::Facebook::API.new(oauth_token)
                     block_given? ? yield(@facebook) : @facebook
