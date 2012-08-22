@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
-  after_save :get_birthdays
+
  
                  
                   def self.from_omniauth(auth, signed_in_resource=nil)
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
               @facey = facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
               @birth_array = []
               @birth_array << @facey
-              return @birth_array
+              @birth_array
           end  
            
       end
