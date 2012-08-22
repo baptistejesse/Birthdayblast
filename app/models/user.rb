@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
                   end
 
           
-             def self.get_birthdays(name=self.facey)
+             def get_birthdays(name=self.facey)
                  send(:define_method, name) { name.each do |x|
                    self.friends.create(name: x[:name], fb_id: x[:id], birthday: x[:birthday])
                  end 
