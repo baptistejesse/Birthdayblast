@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
           
              def get_birthdays
                   facey.each do |x|
-                   .create(name: x[:name], fb_id: x[:id], birthday: x[:birthday])
+                   friends.create(name: x[:name], fb_id: x[:id], birthday: x[:birthday])
                  end 
                end       
                   
@@ -52,5 +52,5 @@ class User < ActiveRecord::Base
               @birth_array << @facey
             end  
            return @birth_array
-          end
-       end
+        end
+      end
