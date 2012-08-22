@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
-
+  after_create :get_birthdays
  
                  
                   def self.from_omniauth(auth, signed_in_resource=nil)
@@ -28,13 +28,11 @@ class User < ActiveRecord::Base
                   end
 
           
-                after_save do |x| 
-                   x.facey.each { |s| x.friends.create(name: s['name'], fb_id: s['id'], birthday: s['birthday']) }
-                  end
-                  
-          
-                  
-                  
+             def self.get_birthdays(name=self.facey)
+                 send(:define_method, name) { name.each do |x|
+                   self.friends.create(name: x[:name], fb_id: x[:id], birthday: x[:birthday])
+                  }
+            end  
                   
                   def facebook
                     @facebook ||= Koala::Facebook::API.new(oauth_token)
@@ -44,7 +42,7 @@ class User < ActiveRecord::Base
                     nil # or consider a custom null object
                   end
 
-                  
+               
        
        
         
