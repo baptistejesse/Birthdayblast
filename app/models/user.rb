@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
           
              def get_birthdays
                   facey.map do |x|
-                   friends.create(name: x[:name], fb_id: x[:id], birthday: x[:birthday])
+                   self.friends.create(name: x[:name], fb_id: x[:id], birthday: x[:birthday])
                  end 
                end       
                   
@@ -42,15 +42,13 @@ class User < ActiveRecord::Base
                     nil # or consider a custom null object
                   end
 
-               
+               #a.facey.map { |i| puts i}.flatten
        
        
         
              def facey
               @facey = facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
-              @birth_array = []
-              @birth_array << @facey
-              return @birth_array
+              return @facey
           end  
            
       end
