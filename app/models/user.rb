@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
               @facey = facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
               @birth_array = []
               @birth_array << @facey
-            end  
-           return @birth_array
-        end
+              return @birth_array
+          end  
+           
       end
