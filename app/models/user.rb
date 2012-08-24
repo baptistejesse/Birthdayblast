@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
                   def self.from_omniauth(auth, signed_in_resource=nil)
                     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
                       user.provider = auth.provider
+                      user.nickname = auth.info.nickname
                       user.uid = auth.uid
                       user.email = auth.info.email
                       user.password = Devise.friendly_token[0,20]
@@ -30,7 +31,7 @@ class User < ActiveRecord::Base
           
              def get_birthdays
                   facey.map do |x|
-                   self.friends.create(name: x['name'], fb_id: x['id'], birthday: x['birthday'])
+                   self.friends.create(name: x['name'], fb_id: x['id'], birthday: x['birthday'], usernmame: x['username'])
                  end 
                end       
                   
