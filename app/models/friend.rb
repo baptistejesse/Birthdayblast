@@ -4,8 +4,8 @@ class Friend < ActiveRecord::Base
   after_create :month_day
 
 
-def month_day
-if self.birthday != nil and self.birthday.length > 5
+def month_day #!=nil
+if self.birthday.present? and self.birthday.length > 5
 @stuff = self.update_attributes(birthday: self.birthday.slice(0..4))
 end
 end
