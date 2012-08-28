@@ -1,10 +1,10 @@
 
 class BirthdaysController < ApplicationController
-before_filter :authenticate_user!
+before_filter :authenticate_user!, :birthday_user
   # GET /birthdays
   # GET /birthdays.json
   def index
-    @birthdays = Birthday.all
+    @birthdays = @user.birthdays.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ before_filter :authenticate_user!
   # GET /birthdays/1
   # GET /birthdays/1.json
   def show
-    @birthday = Birthday.find(params[:id])
+    @birthday = @user.birthdays.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +26,7 @@ before_filter :authenticate_user!
   # GET /birthdays/new
   # GET /birthdays/new.json
   def new
-    @birthday = Birthday.new
+    @birthday = @user.birthdays.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,13 +36,14 @@ before_filter :authenticate_user!
 
   # GET /birthdays/1/edit
   def edit
-    @birthday = Birthday.find(params[:id])
+    @birthday = @user.birthdays.find(params[:id])
   end
 
   # POST /birthdays
   # POST /birthdays.json
   def create
-    @birthday = Birthday.new(params[:birthday])
+  
+    @birthday = @user.birthdays.new(params[:birthday])
 
     respond_to do |format|
       if @birthday.save
@@ -58,7 +59,7 @@ before_filter :authenticate_user!
   # PUT /birthdays/1
   # PUT /birthdays/1.json
   def update
-    @birthday = Birthday.find(params[:id])
+    @birthday = @user.birthdays.find(params[:id])
 
     respond_to do |format|
       if @birthday.update_attributes(params[:birthday])
@@ -74,7 +75,7 @@ before_filter :authenticate_user!
   # DELETE /birthdays/1
   # DELETE /birthdays/1.json
   def destroy
-    @birthday = Birthday.find(params[:id])
+    @birthday = @user.birthdays.find(params[:id])
     @birthday.destroy
 
     respond_to do |format|
@@ -82,4 +83,17 @@ before_filter :authenticate_user!
       format.json { head :no_content }
     end
   end
+
+
+private
+
+
+def birthday_user
+@user ||= current_user  
+  
+end
+
+
+
+
 end

@@ -9,8 +9,7 @@ def run(user,message)
 @c = Time.now
 @birth = user.friends.select do |x|
 if x.birthday == "#{c.month}/#{c.day}"  
-@graph.put_wall_post("#{message}", "tmiley") 
-  
+user.facebook { |fb| fb.put_wall_post("#{message}",{name: x.name }, x.fb_id)}
 end   
   
 end
