@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828133722) do
+ActiveRecord::Schema.define(:version => 20120830193453) do
 
   create_table "birthdays", :force => true do |t|
     t.string   "message"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20120828133722) do
     t.integer  "user_id"
     t.string   "fb_id"
   end
+
+  add_index "birthdays", ["user_id"], :name => "index_birthdays_on_user_id"
 
   create_table "friends", :force => true do |t|
     t.string   "name"
@@ -31,6 +33,11 @@ ActiveRecord::Schema.define(:version => 20120828133722) do
     t.string   "username"
     t.string   "message"
   end
+
+  add_index "friends", ["birthday"], :name => "index_friends_on_birthday"
+  add_index "friends", ["fb_id"], :name => "index_friends_on_fb_id"
+  add_index "friends", ["message"], :name => "index_friends_on_message"
+  add_index "friends", ["user_id"], :name => "index_friends_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -56,5 +63,6 @@ ActiveRecord::Schema.define(:version => 20120828133722) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["uid"], :name => "index_users_on_uid"
 
 end
