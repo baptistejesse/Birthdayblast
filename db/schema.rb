@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120830193453) do
+ActiveRecord::Schema.define(:version => 20120830201923) do
 
   create_table "birthdays", :force => true do |t|
     t.string   "message"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20120830193453) do
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
     t.string   "fb_id"
+    t.string   "linky"
+    t.string   "friend"
   end
 
   add_index "birthdays", ["user_id"], :name => "index_birthdays_on_user_id"
@@ -32,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20120830193453) do
     t.integer  "user_id"
     t.string   "username"
     t.string   "message"
+    t.string   "links"
   end
 
   add_index "friends", ["birthday"], :name => "index_friends_on_birthday"
