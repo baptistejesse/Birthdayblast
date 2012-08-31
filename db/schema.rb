@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120830201923) do
+ActiveRecord::Schema.define(:version => 20120831031441) do
 
   create_table "birthdays", :force => true do |t|
     t.string   "message"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20120830201923) do
     t.string   "username"
     t.string   "message"
     t.string   "links"
+    t.string   "friend_pic"
   end
 
   add_index "friends", ["birthday"], :name => "index_friends_on_birthday"
