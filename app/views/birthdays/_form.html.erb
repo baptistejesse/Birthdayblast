@@ -16,7 +16,7 @@
 	<%= f.select(:friend, @friends.map{|x|[ x.name,x.fb_id]} ) %>
     <%= f.label :message %>
     <%= f.text_area :message, :placeholder => "Happy Birthday enjoy!", :rows => "3"%>
-    <%= f.label :linky%>
+    <%= f.label :linky, "Links"%>
     <%= f.text_field :linky%>
   </div>
   <div class="actions">
