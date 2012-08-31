@@ -11,7 +11,7 @@ end
 end
 
 def pic_name
-puts   "<img src="https://graph.facebook.com/"#{self.fb_id}"/picture"/>  #{self.name}"
+puts   "<img src="https://graph.facebook.com/"#{self.fb_id}"/picture"/>"  "#{self.name}"
 end
 
 
