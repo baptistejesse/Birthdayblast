@@ -16,7 +16,7 @@ before_filter :authenticate_user!, :birthday_user
   # GET /birthdays/1.json
   def show
     @birthday = @user.birthdays.find(params[:id])
-
+   @friends = @user.friends
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @birthday }
@@ -27,7 +27,7 @@ before_filter :authenticate_user!, :birthday_user
   # GET /birthdays/new.json
   def new
     @birthday = @user.birthdays.new
-
+     @friends = @user.friends
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @birthday }
@@ -37,6 +37,7 @@ before_filter :authenticate_user!, :birthday_user
   # GET /birthdays/1/edit
   def edit
     @birthday = @user.birthdays.find(params[:id])
+    @friends = @user.friends
   end
 
   # POST /birthdays
@@ -60,7 +61,7 @@ before_filter :authenticate_user!, :birthday_user
   # PUT /birthdays/1.json
   def update
     @birthday = @user.birthdays.find(params[:id])
-
+    @friends = @user.friends
     respond_to do |format|
       if @birthday.update_attributes(params[:birthday])
         format.html { redirect_to @birthday, notice: 'Birthday was successfully updated.' }
@@ -76,6 +77,7 @@ before_filter :authenticate_user!, :birthday_user
   # DELETE /birthdays/1.json
   def destroy
     @birthday = @user.birthdays.find(params[:id])
+    @friends = @user.friends
     @birthday.destroy
 
     respond_to do |format|
