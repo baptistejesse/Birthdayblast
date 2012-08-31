@@ -13,7 +13,7 @@
 
   <div class="field">
 	<%= f.label :friend %>
-	<%= f.select(:friend, @friends.map{|x| ["#{imag_tag("https://graph.facebook.com/#{x.fd_id}/picture") }" "#{x.name}",x.fb_id]} ) %>
+	<%= f.select(:friend, @friends.map{|x| [x.pic_name,x.fb_id]} ) %>
     <%= f.label :message %>
     <%= f.text_area :message, :placeholder => "Happy Birthday enjoy!", :rows => "3"%>
     <%= f.label :linky, "Links"%>

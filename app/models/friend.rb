@@ -10,6 +10,9 @@ self.update_attributes(birthday: self.birthday.slice(0..4))
 end
 end
 
+def pic_name
+  "#{image_tag("https://graph.facebook.com/#{self.fb_id}/picture")}"  "#{self.name}"
+end
 
 
 end
