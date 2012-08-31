@@ -11,8 +11,8 @@ end
 end
 
 def pic_name
-Erb.new(<%=image_tag("self.friend_pic") %>)
-Erb.new(<%= self.name %>)
+Erb.new("<%=image_tag("self.friend_pic") %>")
+Erb.new("<%= self.name %>")
 end
 
 
