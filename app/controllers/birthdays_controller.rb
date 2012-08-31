@@ -44,7 +44,7 @@ before_filter :authenticate_user!, :birthday_user
   def create
   
     @birthday = @user.birthdays.new(params[:birthday])
-
+    @friends = @user.friends
     respond_to do |format|
       if @birthday.save
         format.html { redirect_to @birthday, notice: 'Birthday was successfully created.' }
