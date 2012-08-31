@@ -11,7 +11,7 @@ end
 end
 
 def pic_name
-  "#{image_path("https://graph.facebook.com/#{self.fb_id}/picture")}"  "#{self.name}"
+   "#{<img src="#{image_path("https://graph.facebook.com/#{self.fb_id}/picture")}"/>}"  "#{self.name}"
 end
 
 
