@@ -3,7 +3,7 @@ class BirthdaysController < ApplicationController
 before_filter :authenticate_user!
   # GET /birthdays.json
   def index
-    @birthdays = @user.birthdays.all
+    @birthdays = Birthday.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,8 +14,8 @@ before_filter :authenticate_user!
   # GET /birthdays/1
   # GET /birthdays/1.json
   def show
-    @birthday = @user.birthdays.find(params[:id])
-   @friends = @user.friends
+    @birthday = Birthday.find(params[:id])
+   @friends = current_user.friends
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @birthday }
@@ -25,8 +25,8 @@ before_filter :authenticate_user!
   # GET /birthdays/new
   # GET /birthdays/new.json
   def new
-    @birthday = @user.birthdays.new
-     @friends = @user.friends
+    @birthday = Birthday.new
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @birthday }
@@ -35,16 +35,16 @@ before_filter :authenticate_user!
 
   # GET /birthdays/1/edit
   def edit
-    @birthday = @user.birthdays.find(params[:id])
-    @friends = @user.friends
+    @birthday = Birthday.find(params[:id])
+    @friends = current_user.friends
   end
 
   # POST /birthdays
   # POST /birthdays.json
   def create
   
-    @birthday = @user.birthdays.new(params[:birthday])
-    @friends = @user.friends
+    @birthday = Birthday.new(params[:birthday])
+    @friends = current_user.friends
     respond_to do |format|
       if @birthday.save
         format.html { redirect_to @birthday, notice: 'Birthday was successfully created.' }
@@ -59,8 +59,8 @@ before_filter :authenticate_user!
   # PUT /birthdays/1
   # PUT /birthdays/1.json
   def update
-    @birthday = @user.birthdays.find(params[:id])
-    @friends = @user.friends
+    @birthday = Birthday.find(params[:id])
+    @friends = current_user.friends
     respond_to do |format|
       if @birthday.update_attributes(params[:birthday])
         format.html { redirect_to @birthday, notice: 'Birthday was successfully updated.' }
@@ -75,8 +75,8 @@ before_filter :authenticate_user!
   # DELETE /birthdays/1
   # DELETE /birthdays/1.json
   def destroy
-    @birthday = @user.birthdays.find(params[:id])
-    @friends = @user.friends
+    @birthday = Birthday.find(params[:id])
+    
     @birthday.destroy
 
     respond_to do |format|
