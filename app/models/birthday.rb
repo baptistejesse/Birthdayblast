@@ -13,7 +13,7 @@ s.update_attributes(links: x.linky, message: x.friend)
 
 end
 end
-end
+
 
 
 end
