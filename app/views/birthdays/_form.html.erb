@@ -18,7 +18,7 @@
     <%= f.text_area :message, :placeholder => "Happy Birthday enjoy!", :rows => "3"%>
     <%= f.label :linky, "Links"%>
     <%= f.text_field :linky%>
-    <%f.hidden_field :user_id, { value: current_user.id }%>
+    <%= f.hidden_field :user_id, { value: current_user.id }%>
   </div>
   <div class="actions">
     <%= f.submit "Message", :class => "btn btn-info"  %>
