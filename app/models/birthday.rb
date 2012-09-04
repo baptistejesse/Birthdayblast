@@ -12,8 +12,6 @@ after_create do |message|
 @friends.message = message.message
 @friends.save
 
-}
-
 end
 
 
