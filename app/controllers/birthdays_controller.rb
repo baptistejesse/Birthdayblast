@@ -26,7 +26,7 @@ before_filter :authenticate_user!
   # GET /birthdays/new.json
   def new
     @birthday = Birthday.new
-
+     @friends = current_user.friends
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @birthday }
