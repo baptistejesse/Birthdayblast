@@ -6,7 +6,7 @@ class Birthday < ActiveRecord::Base
 
 after_create do |x|
  #want to get user and get each friend id and set their message and link 
-@user = User.find_by_id(x.user.id)  
+@user = User.find_by_id(x.user_id)  
 @friends = @user.friends.where(:fb_id => x.friend)  
 @friends.links = x.linky
 @friends.message = x.message
