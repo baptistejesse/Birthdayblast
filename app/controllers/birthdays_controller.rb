@@ -1,7 +1,6 @@
 
 class BirthdaysController < ApplicationController
-before_filter :authenticate_user!, :birthday_user
-  # GET /birthdays
+before_filter :authenticate_user!
   # GET /birthdays.json
   def index
     @birthdays = @user.birthdays.all
@@ -86,14 +85,6 @@ before_filter :authenticate_user!, :birthday_user
     end
   end
 
-
-private
-
-
-def birthday_user
-@user ||= current_user  
-  
-end
 
 
 
