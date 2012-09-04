@@ -10,10 +10,7 @@ self.update_attributes(birthday: self.birthday.slice(0..4))
 end
 end
 
-def pic_name
-Erb.new("<%=image_tag("self.friend_pic") %>")
-Erb.new("<%= self.name %>")
-end
+
 
 
 end
