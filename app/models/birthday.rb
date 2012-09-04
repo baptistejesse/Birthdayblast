@@ -4,13 +4,17 @@ class Birthday < ActiveRecord::Base
 
 
 
-after_create do |x|
+after_create do |message|
  #want to get user and get each friend id and set their message and link 
-@user = User.find_by_id(x.user_id)  
-@friends = @user.friends.where(:fb_id => x.friend)  
-@friends.links = x.linky
-@friends.message = x.message
-@friends.save
+@user = User.find_by_id(message.user_id)  
+ @user.friends.select { |friend| 
+if friend.fb_id == message.friend
+friend.links = message.linky
+friend.message = message.message
+friend.save
+end
+}
+
 end
 
 
