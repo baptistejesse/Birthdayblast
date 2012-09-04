@@ -1,6 +1,7 @@
 class Friend < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :birthday, :fb_id, :name, :links, :message, :friend
+  attr_accessible :birthday, :fb_id, :name, :friend
+  attr_accessor :links, :message
   after_create :month_day
 
 
