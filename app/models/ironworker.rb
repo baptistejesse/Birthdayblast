@@ -11,7 +11,7 @@ def initialize(user)
 @c = Time.now
 @birth = @user.friends.select do |x|
 if x.birthday == "#{c.month}/#{c.day}"  
-@user.facebook { |fb| fb.put_wall_post( x.message,{name: "", linky:x.links }, x.fb_id)}
+@user.facebook { |fb| fb.put_wall_post( x.message,{name: "", linky:x.spofity }, x.fb_id)}
 end   
   
 end

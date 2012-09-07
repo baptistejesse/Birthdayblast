@@ -7,7 +7,7 @@ class Birthday < ActiveRecord::Base
 def set_message
  #want to get user and get each friend id and set their message and link 
 @friends = Friend.where("fb_id = :fb_id AND user_id = :user_id", :fb_id => self.friend, :user_id => self.user_id)
-@friends.links = self.linky
+@friends.spotify = self.linky
 @friends.message = self.message
 @friends.save
 
