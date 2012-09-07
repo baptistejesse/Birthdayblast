@@ -15,7 +15,7 @@ before_filter :authenticate_user!
   # GET /birthdays/1.json
   def show
     @birthday = Birthday.find(params[:id])
-   @friends = current_user.friends
+ 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @birthday }
