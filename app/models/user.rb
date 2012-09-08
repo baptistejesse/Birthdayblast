@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
        
         
           def facey
-           @facey = facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name,pictures") }
+           @facey = facebook { |fb| fb.get_connection("me", "friends", "fields"=>"birthday,name") }
             return @facey  
           end  
            
