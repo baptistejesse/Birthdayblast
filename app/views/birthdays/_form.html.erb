@@ -13,7 +13,7 @@
 
   <div class="field">
 	<%= f.label :friend_id, "Friend" %>
-	<%= f.select(:friend_id , @friends.map{|x| [x.name,x.fb_id]} ) %>
+	<%= f.select(:friend_id , @friends.map{|x| [x.name,x.id]} ) %>
     <%= f.label :message %>
     <%= f.text_area :message, :placeholder => "Happy Birthday enjoy!", :rows => "3"%>
     <%= f.label :linky, "Links"%>
