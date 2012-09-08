@@ -1,7 +1,7 @@
 class Birthday < ActiveRecord::Base
   attr_accessible :message
   belongs_to :user
-  after_save :set_message
+  after_create :set_message
 
 
 def set_message
