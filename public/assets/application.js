@@ -1,5 +1,10 @@
 /*!
- * jQuery JavaScript Library v1.8.0
+ * jQuery JavaScript Library v1.8.0stylesheets/
+	application.css
+	birthdays.css.scss
+	scaffolds.css.scss
+	users.css.scss
+
  * http://jquery.com/
  *
  * Includes Sizzle.js
