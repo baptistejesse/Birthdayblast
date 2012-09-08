@@ -6,7 +6,7 @@ class Birthday < ActiveRecord::Base
 
 def gogo
  #want to get user and get each friend id and set their message and link
-@user = User.find_by_id(self.user_id)  
+@user = User.where(id: self.user_id)  
 @friend = @user.friends.where(fb_id: self.friend)
 @friend.spotify = self.linky,
 @friend.message = self.message
